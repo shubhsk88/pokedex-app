@@ -1,3 +1,3 @@
 import { combineReducers } from 'redux';
-import pokemons from './pokemons';
-export default combineReducers({ pokemons });
+import data from './pokemons';
+export default combineReducers({ data });

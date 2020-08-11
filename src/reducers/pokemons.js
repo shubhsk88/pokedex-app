@@ -7,19 +7,16 @@ const initialState = {
   isPokemonLoaded: false,
 };
 
-export default function(state=initialState,actions){
-    const {type}=actions;
-    switch(type)
-    {
-        case GET_POKEMONS:
-            return state;
-        case GET_POKEMON:
-            return state;
-        case RESET_POKEMON:
-            return state;
-        default:
-            return state            
-    }
-
+export default function (state = initialState, actions) {
+  const { type } = actions;
+  switch (type) {
+    case GET_POKEMONS:
+      return state;
+    case GET_POKEMON:
+      return state;
+    case RESET_POKEMON:
+      return state;
+    default:
+      return state;
+  }
 }
-

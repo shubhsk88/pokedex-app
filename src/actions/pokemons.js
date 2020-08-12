@@ -7,25 +7,32 @@ const fetchDetails = async (pokemon) => {
   const { url } = pokemon;
   const response = await fetch(url);
   const data = await response.json();
-
   return data;
 };
-// function fetchPokemonData(pokemons) {
-//   const newNum = [];
-//   pokemons.forEach(async (pokemon) => await newNum.push(fetchDetails(pokemon)));
-//   console.log(newNum);
-//   return newNum;
-// }
+
+
+export function getPokemon(id)
+{
+  return async function(dispatch)
+  {
+    const res=await fetch('')
+  }
+}
 export function getPokemons() {
   return async function (dispatch) {
     const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=15');
     const pokemons = await res.json();
     const pokedex = pokemons.results;
     let arr = [];
-    const pokemonsDetails = await pokedex.map((pokemon) => {
-      fetchDetails(pokemon).then((d) => arr.push(d));
-    });
-    console.log(arr);
+    const pokemonsDetails = await Promise.all(
+      pokedex.map(async (pokemon) => {
+        const result = await fetchDetails(pokemon);
+       
+
+        return result;
+      })
+    );
+    
     return dispatch({ type: GET_POKEMONS, payload: pokemonsDetails });
   };
 }

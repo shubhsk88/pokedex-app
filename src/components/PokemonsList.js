@@ -8,15 +8,8 @@ const PokemonsList = () => {
     console.log('woek');
   }, [dispatch]);
   const data = useSelector((state) => state.data.pokemons);
-  console.log('hi', data);
-  return (
-    <div>
-      hi ,
-      {data.map((nor, i) => (
-        <div key={i}>{nor.name}</div>
-      ))}
-    </div>
-  );
+
+  return <div>hi ,</div>;
 };
 
 export default PokemonsList;

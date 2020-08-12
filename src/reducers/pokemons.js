@@ -8,10 +8,10 @@ const initialState = {
 };
 
 export default function (state = initialState, actions) {
-  const { type } = actions;
+  const { type, payload } = actions;
   switch (type) {
     case GET_POKEMONS:
-      return state;
+      return { ...state, pokemons: payload, isPokemonsLoaded: true };
     case GET_POKEMON:
       return state;
     case RESET_POKEMON:

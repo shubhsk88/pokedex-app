@@ -49,33 +49,29 @@ const PokemonsList = () => {
   console.log(filteredPokemon, type);
   return (
     <>
-      <select
-        name="filter"
-        value={type}
-        onChange={(e) => setType(e.target.value)}
-        id="filter"
-      >
-        <option value="All" defaultValue>
-          All
-        </option>
-        {pokeTypes.map((type) => (
-          <option key={type} value={type}>
-            {type}
+      <div class="flex justify-end">
+        <select
+          className="px-4 py-2 bg-gray-200 rounded-lg shadow-lg "
+          name="filter"
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+          id="filter"
+        >
+          <option value="All" defaultValue>
+            All
           </option>
-        ))}
-      </select>
+          {pokeTypes.map((type) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+      </div>
       <div className="my-12 flex flex-wrap">
         {isLoaded ? (
           filteredPokemon.map((pokemon) => <PokemonCard pokemon={pokemon} />)
         ) : (
-          <lottie-player
-            src="https://assets4.lottiefiles.com/temp/lf20_Tw0dyZ.json"
-            background="transparent"
-            speed="1"
-            loop
-            className="w-64 h-64 mx-auto"
-            autoplay
-          ></lottie-player>
+          <div>Loading...</div>
         )}
       </div>
     </>

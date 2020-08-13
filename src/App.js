@@ -9,11 +9,10 @@ function App() {
     <Router>
       <div className="max-w-screen-xl mx-auto">
         <Link to="/">
-          <img 
-          className="mx-auto"
+          <img
+            className="mx-auto my-4"
             src="https://fontmeme.com/permalink/200813/f8f73e756aa50df22b90934ed92ecb4e.png"
             alt="pokemon-font"
-            
           />
         </Link>{' '}
         <Switch>

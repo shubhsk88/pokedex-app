@@ -33,10 +33,10 @@ const PokemonCard = ({ pokemon }) => {
                 </span>
               ))}
             </div>
-            <div className="text-lg mx-2 flex text-gray-800">
+            <div className="text-lg  flex text-gray-800">
               <div className="mt-2 mr-2">Abilities: </div>
               {pokemon.abilities.map((data) => (
-                <span className=" rounded-lg mb-4 flex  p-2 mx-1 bg-gray-200">
+                <span className=" rounded-lg mb-4 flex  flex-wrap p-2 mx-1 bg-gray-200">
                   #{data.ability.name}
                 </span>
               ))}

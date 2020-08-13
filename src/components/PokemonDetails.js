@@ -1,15 +1,23 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { colorPicker } from '../utils';
+import { Link, useParams } from 'react-router-dom';
 
-import { getEvolution } from '../actions';
-const PokemonDetails = ({ pokemon }) => {
+import { getEvolution, getPokemon, resetPokemon } from '../actions';
+const PokemonDetails = () => {
+  let { id } = useParams();
+
   const dispatch = useDispatch();
-  const evolutions = useSelector((state) => state.evolution);
-
+  const evolutions = useSelector((state) => state.data.evolution);
+  const pokemon = useSelector((state) => state.data.pokemon);
+  const isLoaded = useSelector((state) => state.data.isPokemonLoaded);
+  console.log(isLoaded);
   useEffect(() => {
-    dispatch(getEvolution(pokemon.id));
-  }, [dispatch, pokemon.id]);
+    dispatch(getEvolution(id));
+    dispatch(getPokemon(id));
+    return () => dispatch(resetPokemon());
+  }, [dispatch, id]);
+  if (!isLoaded) return <div>Loading</div>;
   return (
     <div className="max-w-xl mx-auto">
       <header className="flex mx-2 ">
@@ -81,6 +89,9 @@ const PokemonDetails = ({ pokemon }) => {
             );
           })}
         </div>
+        <Link to="/">
+          <button>Explore more Pokemon</button>
+        </Link>
       </main>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons, getEvolution } from '../actions';
+import { getPokemons } from '../actions';
+
 
 import PokemonCard from './PokemonCard';
 const PokemonsList = () => {

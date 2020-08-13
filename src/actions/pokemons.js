@@ -10,6 +10,9 @@ const fetchDetails = async (pokemon) => {
   return data;
 };
 
+export function resetPokemon() {
+  return { type: RESET_POKEMON };
+}
 export function getPokemon(id) {
   return async function (dispatch) {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -41,7 +44,7 @@ export function getEvolution(id) {
     const evolution = await res.json();
     let { chain } = evolution;
 
-    const arr = [chain.species.name];
+    const arr = [{ name: chain.species.name, id }];
     while (chain.evolves_to.length !== 0) {
       chain = chain.evolves_to[0];
 

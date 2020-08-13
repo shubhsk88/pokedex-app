@@ -1,9 +1,12 @@
 import React from 'react';
 
 import './App.css';
+import {
+  BrowserRouter as Router, Link, Switch, Route,
+} from 'react-router-dom';
 import PokemonsList from './components/PokemonsList';
 import PokemonDetails from './components/PokemonDetails';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+
 function App() {
   return (
     <Router>
@@ -14,7 +17,8 @@ function App() {
             src="https://fontmeme.com/permalink/200813/f8f73e756aa50df22b90934ed92ecb4e.png"
             alt="pokemon-font"
           />
-        </Link>{' '}
+        </Link>
+        {' '}
         <Switch>
           <Route exact path="/" component={PokemonsList} />
           <Route exact path="/:id" component={PokemonDetails} />

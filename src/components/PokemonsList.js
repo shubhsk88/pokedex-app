@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons } from '../actions';
 import Tilt from 'react-tilt';
-import { pokeTypes } from '../constants';
 import ReactLoading from 'react-loading';
+import { getPokemons } from '../actions';
+import pokeTypes from '../constants';
 
 import PokemonCard from './PokemonCard';
+
 const PokemonsList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -15,31 +16,27 @@ const PokemonsList = () => {
   const [type, setType] = useState('All');
   const [search, setSearch] = useState('');
 
-  const pokemons = useSelector((state) => state.data.pokemons);
-  const isLoaded = useSelector((state) => state.data.isPokemonsLoaded);
+  const pokemons = useSelector(state => state.data.pokemons);
+  const isLoaded = useSelector(state => state.data.isPokemonsLoaded);
   const filteredPokemon = useMemo(
-    () =>
-      type !== 'All'
-        ? pokemons.filter((pokemon) => {
-            let arr = pokemon.types;
+    () => (type !== 'All'
+      ? pokemons.filter(pokemon => {
+        const arr = pokemon.types;
 
-            for (let i = 0; i < arr.length; i++) {
-              if (arr[i].type.name === type) return true;
-            }
-            return false;
-          })
-        : pokemons,
+        for (let i = 0; i < arr.length; i += 1) {
+          if (arr[i].type.name === type) return true;
+        }
+        return false;
+      })
+      : pokemons),
 
-    [type, pokemons]
+    [type, pokemons],
   );
   const searchResults = useMemo(
-    () =>
-      search
-        ? filteredPokemon.filter((pokemon) => {
-            return pokemon.name.includes(search);
-          })
-        : filteredPokemon,
-    [search, filteredPokemon]
+    () => (search
+      ? filteredPokemon.filter(pokemon => pokemon.name.includes(search))
+      : filteredPokemon),
+    [search, filteredPokemon],
   );
 
   return (
@@ -50,21 +47,21 @@ const PokemonsList = () => {
           className="bg-gray-200 border-2  appearance-none border-gray-200 px-4 py-2 text-lg focus:outline-none focus:border-purple-600 focus:bg-white   rounded-lg shadow-lg "
           id="search"
           placeholder="Search pokemons here!!!"
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={e => setSearch(e.target.value)}
         />
       </div>
-      <div class="flex justify-end">
+      <div className="flex justify-end">
         <select
           className="px-4 py-2 bg-gray-200 rounded-lg shadow-lg "
           name="filter"
           value={type}
-          onChange={(e) => setType(e.target.value)}
+          onChange={e => setType(e.target.value)}
           id="filter"
         >
           <option value="All" defaultValue>
             All
           </option>
-          {pokeTypes.map((type) => (
+          {pokeTypes.map(type => (
             <option key={type} value={type}>
               {type}
             </option>
@@ -73,8 +70,12 @@ const PokemonsList = () => {
       </div>
       <div className="my-12 flex flex-wrap">
         {isLoaded ? (
-          searchResults.map((pokemon) => (
-            <Tilt className="Tilt" options={{ max: 20, perspective: 2000 }}>
+          searchResults.map(pokemon => (
+            <Tilt
+              key={pokemon}
+              className="Tilt"
+              options={{ max: 20, perspective: 2000 }}
+            >
               <PokemonCard pokemon={pokemon} />
             </Tilt>
           ))

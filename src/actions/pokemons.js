@@ -1,9 +1,10 @@
+/* eslint-disable prefer-destructuring */
 export const GET_POKEMONS = 'GET_POKEMONS';
 export const GET_EVOLUTION = 'GET_EVOLUTION';
 export const GET_POKEMON = 'GET_POKEMON';
 export const RESET_POKEMON = 'RESET_POKEMON';
 
-const fetchDetails = async (pokemon) => {
+const fetchDetails = async pokemon => {
   const { url } = pokemon;
   const response = await fetch(url);
   const data = await response.json();
@@ -27,11 +28,11 @@ export function getPokemons() {
     const pokedex = pokemons.results;
 
     const pokemonsDetails = await Promise.all(
-      pokedex.map(async (pokemon) => {
+      pokedex.map(async pokemon => {
         const result = await fetchDetails(pokemon);
 
         return result;
-      })
+      }),
     );
 
     return dispatch({ type: GET_POKEMONS, payload: pokemonsDetails });
@@ -40,7 +41,7 @@ export function getPokemons() {
 export function getEvolution(id) {
   return async function (dispatch) {
     const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon-species/${id}/`
+      `https://pokeapi.co/api/v2/pokemon-species/${id}/`,
     );
     const species = await response.json();
 
@@ -61,7 +62,7 @@ export function getEvolution(id) {
         id: chain.species.url.match(/(\d+)/g)[1],
       });
     }
-    console.log(arr);
+
     return dispatch({ type: GET_EVOLUTION, payload: arr });
   };
 }

@@ -1,4 +1,4 @@
-export const pokeTypes = [
+const pokeTypes = [
   'normal',
   'fire',
   'water',
@@ -17,3 +17,5 @@ export const pokeTypes = [
   'steel',
   'fairy',
 ];
+
+export default pokeTypes;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { colorPicker } from '../utils';
+import { colorPicker, showPokemonId } from '../utils';
 import { Link } from 'react-router-dom';
 
 const PokemonCard = ({ pokemon }) => {
@@ -18,7 +18,10 @@ const PokemonCard = ({ pokemon }) => {
               alt={pokemon.name}
             />
           </div>
-          <div className="py-2 px-6">{pokemon.id}</div>
+
+          <div className="my-4  text-2xl text-gray-500 px-6">
+            {showPokemonId(pokemon.id)}
+          </div>
           <div className="px-6 py-4">
             <div className="font-bold text-3xl capitalize ">{pokemon.name}</div>
             <div className="text-lg  flex  m-2 ">

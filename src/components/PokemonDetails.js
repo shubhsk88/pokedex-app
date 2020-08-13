@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { colorPicker } from '../utils';
+import { colorPicker, showPokemonId } from '../utils';
 import { Link, useParams } from 'react-router-dom';
+import ReactLoading from 'react-loading';
 
 import { getEvolution, getPokemon, resetPokemon } from '../actions';
 const PokemonDetails = () => {
@@ -17,12 +18,19 @@ const PokemonDetails = () => {
     dispatch(getPokemon(id));
     return () => dispatch(resetPokemon());
   }, [dispatch, id]);
-  if (!isLoaded) return <div>Loading</div>;
+  if (!isLoaded)
+    return (
+      <div className="mt-64  max-w-xl  flex justify-center">
+        <ReactLoading type="balls" color="#333333" height={400} width={200} />
+      </div>
+    );
   return (
     <div className="mx-auto">
       <header className="flex mx-2  my-4">
         <div className="text-4xl capitalize">{pokemon.name}</div>
-        <div className="text-4xl mx-4 text-gray-200 ">#{pokemon.id}</div>
+        <div className="text-4xl mx-4 text-gray-500 ">
+          {showPokemonId(pokemon.id)}
+        </div>
       </header>
       <main>
         <div className="flex w-full justify-around">
@@ -33,6 +41,7 @@ const PokemonDetails = () => {
             src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
             alt={pokemon.name}
           />
+
           <div className="text-2xl rounded-lg w-1/3  p-4 bg-gray-100">
             <div className="grid grid-cols-2 grid-row-3 gap-4">
               <div className="flex flex-col">
@@ -43,16 +52,16 @@ const PokemonDetails = () => {
                 <div className="text-gray-800">Weight</div>
                 <div className="text-black">{pokemon.weight}</div>
               </div>
-              <div className="flex flex-col row-span-1">
+              <div className="flex flex-col col-span-2">
                 <div className="text-gray-800">XP</div>
                 <div className="text-black">{pokemon.base_experience}</div>
               </div>
 
-              <div className="flex flex-col">
+              <div className="flex flex-col col-span-2 ">
                 <div className="text-gray-800">Abilities</div>
                 <div className="text-black flex flex-wrap px-2">
                   {pokemon.abilities.map((ability) => (
-                    <div className="mx-1 px-3 py-2 bg-gray-300 rounded-lg text-gray-800 ">
+                    <div className="m-1 px-3 py-2 bg-gray-300 rounded-lg text-gray-800 ">
                       {ability.ability.name}
                     </div>
                   ))}

@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPokemons } from '../actions';
+import Tilt from 'react-tilt';
+import { pokeTypes } from '../constants';
+import ReactLoading from 'react-loading';
 
 import PokemonCard from './PokemonCard';
 const PokemonsList = () => {
@@ -8,25 +11,6 @@ const PokemonsList = () => {
   useEffect(() => {
     dispatch(getPokemons());
   }, [dispatch]);
-  const pokeTypes = [
-    'normal',
-    'fire',
-    'water',
-    'grass',
-    'electric',
-    'ice',
-    'fighting',
-    'poison',
-    'ground',
-    'psychic',
-    'bug',
-    'rock',
-    'ghost',
-    'dark',
-    'dragon',
-    'steel',
-    'fairy',
-  ];
 
   const [type, setType] = useState('All');
 
@@ -44,9 +28,10 @@ const PokemonsList = () => {
             return false;
           })
         : pokemons,
+
     [type, pokemons]
   );
-  console.log(filteredPokemon, type);
+
   return (
     <>
       <div class="flex justify-end">
@@ -69,9 +54,20 @@ const PokemonsList = () => {
       </div>
       <div className="my-12 flex flex-wrap">
         {isLoaded ? (
-          filteredPokemon.map((pokemon) => <PokemonCard pokemon={pokemon} />)
+          filteredPokemon.map((pokemon) => (
+            <Tilt className="Tilt" options={{ max: 20, perspective: 2000 }}>
+              <PokemonCard pokemon={pokemon} />
+            </Tilt>
+          ))
         ) : (
-          <div>Loading...</div>
+          <div className="mt-64 mx-auto">
+            <ReactLoading
+              type="balls"
+              color="#333333"
+              height={200}
+              width={100}
+            />
+          </div>
         )}
       </div>
     </>

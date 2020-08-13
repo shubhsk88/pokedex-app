@@ -31,26 +31,26 @@ const PokemonDetails = () => {
             src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
             alt={pokemon.name}
           />
-          <div className="text-2xl rounded-lg w-1/3  p-4 bg-green-300">
+          <div className="text-2xl rounded-lg w-1/3  p-4 bg-gray-100">
             <div className="grid grid-cols-2 grid-row-3 gap-4">
               <div className="flex flex-col">
-                <div className="text-white">Height</div>
+                <div className="text-gray-600">Height</div>
                 <div className="text-black">3'03"</div>
               </div>
               <div className="flex flex-col">
-                <div className="text-white">Height</div>
+                <div className="text-gray-800">Height</div>
                 <div className="text-black">3'03"</div>
               </div>
               <div className="flex flex-col">
-                <div className="text-white">Height</div>
+                <div className="text-gray-800">Height</div>
                 <div className="text-black">3'03"</div>
               </div>
               <div className="flex flex-col">
-                <div className="text-white">Height</div>
+                <div className="text-gray-800">Height</div>
                 <div className="text-black">3'03"</div>
               </div>
               <div className="flex flex-col">
-                <div className="text-white">Height</div>
+                <div className="text-gray-800">Height</div>
                 <div className="text-black">3'03"</div>
               </div>
             </div>

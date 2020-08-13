@@ -42,6 +42,7 @@ export function getEvolution(id) {
     const res = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}/`);
 
     const evolution = await res.json();
+    console.log(evolution);
     let { chain } = evolution;
 
     const arr = [{ name: chain.species.name, id }];
@@ -53,6 +54,7 @@ export function getEvolution(id) {
         id: chain.species.url.match(/(\d+)/g)[1],
       });
     }
+    console.log(arr);
     return dispatch({ type: GET_EVOLUTION, payload: arr });
   };
 }

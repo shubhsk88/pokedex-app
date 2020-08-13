@@ -13,6 +13,7 @@ const PokemonsList = () => {
   }, [dispatch]);
 
   const [type, setType] = useState('All');
+  const [search, setSearch] = useState('');
 
   const pokemons = useSelector((state) => state.data.pokemons);
   const isLoaded = useSelector((state) => state.data.isPokemonsLoaded);
@@ -31,9 +32,27 @@ const PokemonsList = () => {
 
     [type, pokemons]
   );
+  const searchResults = useMemo(
+    () =>
+      search
+        ? filteredPokemon.filter((pokemon) => {
+            return pokemon.name.includes(search);
+          })
+        : filteredPokemon,
+    [search, filteredPokemon]
+  );
 
   return (
     <>
+      <div className="flex justify-center mt-3">
+        <input
+          type="text"
+          className="bg-gray-200 border-2  appearance-none border-gray-200 px-4 py-2 text-lg focus:outline-none focus:border-purple-600 focus:bg-white   rounded-lg shadow-lg "
+          id="search"
+          placeholder="Search pokemons here!!!"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       <div class="flex justify-end">
         <select
           className="px-4 py-2 bg-gray-200 rounded-lg shadow-lg "
@@ -54,7 +73,7 @@ const PokemonsList = () => {
       </div>
       <div className="my-12 flex flex-wrap">
         {isLoaded ? (
-          filteredPokemon.map((pokemon) => (
+          searchResults.map((pokemon) => (
             <Tilt className="Tilt" options={{ max: 20, perspective: 2000 }}>
               <PokemonCard pokemon={pokemon} />
             </Tilt>

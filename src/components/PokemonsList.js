@@ -34,7 +34,7 @@ const PokemonsList = () => {
   );
   const searchResults = useMemo(
     () => (search
-      ? filteredPokemon.filter(pokemon => pokemon.name.includes(search))
+      ? filteredPokemon.filter(pokemon => pokemon.name.includes(search.toLowerCase()))
       : filteredPokemon),
     [search, filteredPokemon],
   );

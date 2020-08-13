@@ -21,7 +21,7 @@ export default function (state = initialState, actions) {
     case GET_POKEMON:
       return { ...state, pokemon: payload, isPokemonLoaded: true };
     case RESET_POKEMON:
-      return { ...state, isPokemonLoaded: false };
+      return { ...state, isPokemonLoaded: false, evolution: [] };
     case GET_EVOLUTION:
       return { ...state, evolution: payload };
     default:

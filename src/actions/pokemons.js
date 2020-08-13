@@ -39,13 +39,20 @@ export function getPokemons() {
 }
 export function getEvolution(id) {
   return async function (dispatch) {
-    const res = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}/`);
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon-species/${id}/`
+    );
+    const species = await response.json();
+
+    const res = await fetch(species.evolution_chain.url);
 
     const evolution = await res.json();
-    console.log(evolution);
+
     let { chain } = evolution;
 
-    const arr = [{ name: chain.species.name, id }];
+    const arr = [
+      { name: chain.species.name, id: chain.species.url.match(/(\d+)/g)[1] },
+    ];
     while (chain.evolves_to.length !== 0) {
       chain = chain.evolves_to[0];
 

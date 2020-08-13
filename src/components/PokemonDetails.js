@@ -20,14 +20,16 @@ const PokemonDetails = () => {
   if (!isLoaded) return <div>Loading</div>;
   return (
     <div className="mx-auto">
-      <header className="flex mx-2">
+      <header className="flex mx-2  my-4">
         <div className="text-4xl capitalize">{pokemon.name}</div>
-        <div className="text-4xl">#{pokemon.id}</div>
+        <div className="text-4xl px-2 ">#{pokemon.id}</div>
       </header>
       <main>
         <div className="flex w-full justify-around">
           <img
-            className="w-1/3 px-4 py-2"
+            className={`w-1/3 px-4 py-2 rounded-lg overflow-hidden ${colorPicker(
+              pokemon.types[0].type.name
+            )}`}
             src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
             alt={pokemon.name}
           />
@@ -56,8 +58,8 @@ const PokemonDetails = () => {
             </div>
           </div>
         </div>
-        <div className="text-lg    m-2  ">
-          <div className="my-4  text-4xl">Type </div>
+        <div className="text-lg    my-2  ">
+          <div className="my-4   text-4xl">Type </div>
           <div className="flex">
             {pokemon.types.map((type) => (
               <span
@@ -70,8 +72,30 @@ const PokemonDetails = () => {
             ))}
           </div>
         </div>
+        <div className="text-4xl">Evolution</div>
+        <div className=" bg-gray-200 p-4  my-2 w-full justify-between items-center rounded-lg  flex">
+          {evolutions.map((evolution) => {
+            return (
+              <div className="flex flex-col p-8 ">
+                <Link to={`${evolution.id}`}>
+                  <div className="p-8 rounded-full border  border-black">
+                    <img
+                      className="w-64   overflow-hidden  object-contain
+                    "
+                      src={`https://pokeres.bastionbot.org/images/pokemon/${evolution.id}.png`}
+                      alt={evolution.name}
+                    />
+                  </div>
+                </Link>
+                <h2 className="text-3xl text-center capitalize">
+                  {evolution.name}
+                </h2>
+              </div>
+            );
+          })}
+        </div>
         <div className="text-4xl">Moves</div>
-        <div className="py-6">
+        <div className="py-2">
           <div className="my-2 flex  flex-wrap  px-4 py-2 ">
             {pokemon.moves.map((pokemon) => (
               <div className="px-4 py-2 bg-gray-200 m-2 rounded-lg text-gray-600">
@@ -80,25 +104,7 @@ const PokemonDetails = () => {
             ))}
           </div>
         </div>
-        <div className="text-4xl">Evolution</div>
-        <div className=" bg-gray-200 p-4  my-2 w-full justify-between items-center rounded-lg  flex">
-          {evolutions.map((evolution) => {
-            return (
-              
-              <div className="flex flex-col p-8 ">
-                <Link to={`${evolution.id}`}>
-                <img
-                  className="w-64 rounded-full p-4 border border-black  "
-                  src={`https://pokeres.bastionbot.org/images/pokemon/${evolution.id}.png`}
-                  alt={evolution.name}
-                />
-                </Link>
-                <h2 className="text-3xl capitalize">{evolution.name}</h2>
-              </div>
-              
-            );
-          })}
-        </div>
+
         <Link to="/">
           <div className="flex justify-center my-4">
             <button className="px-4 py-2 bg-purple-700 text-purple-100  rounded-lg shadow-lg focus:outline-none hover:bg-purple-600 ">

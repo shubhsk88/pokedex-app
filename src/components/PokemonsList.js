@@ -72,7 +72,7 @@ const PokemonsList = () => {
         {isLoaded ? (
           searchResults.map(pokemon => (
             <Tilt
-              key={pokemon}
+              key={pokemon.name}
               className="Tilt"
               options={{ max: 20, perspective: 2000 }}
             >

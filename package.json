@@ -21,8 +21,8 @@
     "tailwindcss": "^1.6.2"
   },
   "scripts": {
-    "start": "yarn run watch:css && react-scripts start",
-    "build": "yarn run build:css && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",

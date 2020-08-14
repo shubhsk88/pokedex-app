@@ -10,9 +10,9 @@ const PokemonDetails = () => {
   const { id } = useParams();
 
   const dispatch = useDispatch();
-  const evolutions = useSelector((state) => state.data.evolution);
-  const pokemon = useSelector((state) => state.data.pokemon);
-  const isLoaded = useSelector((state) => state.data.isPokemonLoaded);
+  const evolutions = useSelector(state => state.data.evolution);
+  const pokemon = useSelector(state => state.data.pokemon);
+  const isLoaded = useSelector(state => state.data.isPokemonLoaded);
 
   useEffect(() => {
     dispatch(getEvolution(id));
@@ -38,7 +38,7 @@ const PokemonDetails = () => {
         <div className="flex w-full justify-around">
           <img
             className={`w-1/3 px-4 py-2 rounded-lg overflow-hidden ${colorPicker(
-              pokemon.types[0].type.name
+              pokemon.types[0].type.name,
             )}`}
             src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
             alt={pokemon.name}
@@ -62,7 +62,7 @@ const PokemonDetails = () => {
               <div className="flex flex-col col-span-2 ">
                 <div className="text-gray-800">Abilities</div>
                 <div className="text-black flex flex-wrap px-2">
-                  {pokemon.abilities.map((ability) => (
+                  {pokemon.abilities.map(ability => (
                     <div
                       key={ability.ability.name}
                       className="m-1 px-3 py-2 bg-gray-300 rounded-lg text-gray-800 "
@@ -78,21 +78,22 @@ const PokemonDetails = () => {
         <div className="text-lg    my-2  ">
           <div className="my-4   text-4xl">Type </div>
           <div className="flex">
-            {pokemon.types.map((type) => (
+            {pokemon.types.map(type => (
               <span
                 key={type.type.name}
                 className={`rounded-lg mb-4  p-2 mx-1 ${colorPicker(
-                  type.type.name
+                  type.type.name,
                 )}`}
               >
-                #{type.type.name}
+                #
+                {type.type.name}
               </span>
             ))}
           </div>
         </div>
         <div className="text-4xl">Evolution</div>
         <div className=" bg-gray-200 p-4  my-2 w-full justify-between items-center rounded-lg  flex">
-          {evolutions.map((evolution) => (
+          {evolutions.map(evolution => (
             <div key={evolution.name} className="flex flex-col p-8 ">
               <Link to={`${evolution.id}`}>
                 <div className="p-8 rounded-full border  border-black">
@@ -113,7 +114,7 @@ const PokemonDetails = () => {
         <div className="text-4xl">Moves</div>
         <div className="py-2">
           <div className="my-2 flex  flex-wrap  px-4 py-2 ">
-            {pokemon.moves.map((pokemon) => (
+            {pokemon.moves.map(pokemon => (
               <div
                 key={pokemon.move.name}
                 className="px-4 py-2 bg-gray-200 m-2 rounded-lg text-gray-600"

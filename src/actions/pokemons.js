@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 /* eslint-disable prefer-destructuring */
 export const GET_POKEMONS = 'GET_POKEMONS';
 export const GET_EVOLUTION = 'GET_EVOLUTION';

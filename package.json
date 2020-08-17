@@ -23,7 +23,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "eject": "react-scripts eject",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
@@ -50,6 +51,7 @@
     "eslint-plugin-jsx-a11y": "6.2.x",
     "eslint-plugin-react": "7.20.x",
     "eslint-plugin-react-hooks": "^4.1.0-rc.0",
+    "jest": "^26.4.0",
     "postcss-cli": "^7.1.1",
     "stylelint": "13.3.x",
     "stylelint-config-standard": "20.0.x",

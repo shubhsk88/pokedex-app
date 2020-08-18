@@ -12,7 +12,7 @@ Pokedex is a React web application where you can navigate the details of the dif
 
 ## Video Presentation
 
-[Visit video presentation](https://www.loom.com/share/ff008366d9f8431d99a6d7e24fb9ef30)
+[Visit video presentation](https://www.loom.com/share/e320d7ad218b484cbda74e6257d39bc3)
 
 ## Features & Usage
 

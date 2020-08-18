@@ -32,9 +32,9 @@ Pokedex is a React web application where you can navigate the details of the dif
 ## Setup
 
 1. Clone this repository and access the project's directory.
-2. Run "yarn install".
+2. Run `yarn install`.
 
-3. Run "yarn start" to work on the development server.
+3. Run `yarn start` to work on the development server.
 
 ## Built With
 

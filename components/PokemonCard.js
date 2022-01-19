@@ -8,7 +8,7 @@ const PokemonCard = ({ pokemon }) => {
   const pokemonColor = colorPicker(pokemon.types[0].type.name);
   return (
     <Link href={`/${pokemon.id}`} passHref>
-      <div className=" max-w-sm m-2 ">
+      <div className="flex-1">
         <div className="shadow-lg overflow-hidden max-w-xl rounded-md">
           <div className={` ${pokemonColor} flex justify-center`}>
             <img

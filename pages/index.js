@@ -72,16 +72,14 @@ const PokemonsList = () => {
           ))}
         </select>
       </div>
-      <div className="my-12 flex flex-wrap">
+      <div className="my-12 grid gap-4 grid-cols-3">
         {isLoaded ? (
           searchResults.map((pokemon) => (
-            <Tilt
-              key={pokemon.name}
-              className="Tilt"
-              options={{ max: 20, perspective: 2000 }}
-            >
-              <PokemonCard pokemon={pokemon} />
-            </Tilt>
+            <div key={pokemon.name}>
+              <Tilt className="Tilt" options={{ max: 20, perspective: 2000 }}>
+                <PokemonCard pokemon={pokemon} />
+              </Tilt>
+            </div>
           ))
         ) : (
           <div className="mt-64 mx-auto">

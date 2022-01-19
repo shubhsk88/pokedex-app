@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Head from 'next/head';
 import Tilt from 'react-tilt';
 import ReactLoading from 'react-loading';
 import { getPokemons } from '../actions';
@@ -45,6 +46,10 @@ const PokemonsList = () => {
 
   return (
     <>
+      <Head>
+        <title>Pokedexi- The only pokemon you'll ever need </title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div className="flex justify-center mt-3">
         <input
           type="text"

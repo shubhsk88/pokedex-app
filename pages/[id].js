@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
+import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import ReactLoading from 'react-loading';
@@ -31,6 +32,10 @@ const PokemonDetails = () => {
   }
   return (
     <div className="mx-auto">
+      <Head>
+        <title>Pokemon {pokemon.name}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <header className="flex mx-2  my-4">
         <div className="text-4xl capitalize">{pokemon.name}</div>
         <div className="text-4xl mx-4 text-gray-500 ">

@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "autoprefixer": "^9.8.6",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "autoprefixer": "^10.4.2",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-loading": "^2.0.3",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.2",
+    "react-scripts": "^5.0.0",
     "react-tilt": "^0.1.4",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
@@ -45,16 +45,12 @@
     ]
   },
   "devDependencies": {
-    "eslint": "6.8.x",
-    "eslint-config-airbnb": "18.1.x",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "2.20.x",
     "eslint-plugin-jsx-a11y": "6.2.x",
     "eslint-plugin-react": "7.20.x",
     "eslint-plugin-react-hooks": "^4.1.0-rc.0",
-    "postcss-cli": "^7.1.1",
-    "stylelint": "13.3.x",
-    "stylelint-config-standard": "20.0.x",
-    "stylelint-csstree-validator": "^1.8.0",
-    "stylelint-scss": "3.17.x"
+    "postcss-cli": "^9.1.0"
   }
 }

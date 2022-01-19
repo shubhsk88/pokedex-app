@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import ReactLoading from 'react-loading';
 import { colorPicker, showPokemonId } from '../utils';
@@ -37,17 +38,23 @@ const PokemonDetails = () => {
         </div>
       </header>
       <main>
-        <div className="flex w-full justify-around">
-          <img
-            className={`w-1/3 px-4 py-2 rounded-lg overflow-hidden ${colorPicker(
+        <div className="flex w-full space-x-8 ">
+          <div
+            className={`${colorPicker(
               pokemon.types[0].type.name
-            )}`}
-            src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png`}
-            alt={pokemon.name}
-          />
+            )} w-1/3  rounded-lg  flex justify-center`}
+          >
+            <Image
+              width={300}
+              height={300}
+              src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png`}
+              alt={pokemon.name}
+              className={`  px-4 py-2   overflow-hidden`}
+            />
+          </div>
 
-          <div className="text-2xl rounded-lg w-1/3  p-4 bg-gray-100">
-            <div className="grid grid-cols-2 grid-row-3 gap-4">
+          <div className="text-2xl rounded-lg w-2/3 p-4 bg-gray-100">
+            <div className=" mx-auto grid grid-cols-2 grid-row-3 gap-4">
               <div className="flex flex-col">
                 <div className="text-gray-800">Height</div>
                 <div className="text-black">{pokemon.height}</div>
@@ -102,7 +109,9 @@ const PokemonDetails = () => {
             <div key={evolution.name} className="flex flex-col p-8 ">
               <Link href={`${evolution.id}`}>
                 <div className="p-8 rounded-full border  border-black">
-                  <img
+                  <Image
+                    width={200}
+                    height={200}
                     className="w-64   overflow-hidden  object-contain
                     "
                     src={`https://cdn.traction.one/pokedex/pokemon/${evolution.id}.png`}

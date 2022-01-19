@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import PropTypes from 'prop-types';
 
 import { colorPicker, showPokemonId } from '../utils';
@@ -11,7 +12,9 @@ const PokemonCard = ({ pokemon }) => {
       <div className="justify-center">
         <div className="shadow-lg overflow-hidden  mx-auto  max-w-xl rounded-md">
           <div className={` ${pokemonColor} flex justify-center`}>
-            <img
+            <Image
+              width={200}
+              height={200}
               className="w-1/2 py-2 "
               src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png`}
               alt={pokemon.name}

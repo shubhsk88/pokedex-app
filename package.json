@@ -16,6 +16,10 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
   },
+  "engines": {
+    "npm": ">=6.0.0",
+    "node": ">=13.0.0"
+  },
   "scripts": {
     "lint": "next lint",
     "dev": "next dev",

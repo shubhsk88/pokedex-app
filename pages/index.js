@@ -72,10 +72,10 @@ const PokemonsList = () => {
           ))}
         </select>
       </div>
-      <div className="my-12 grid gap-4 grid-cols-3">
+      <div className="my-12 grid gap-4 md:grid-cols-2 grid-cols-1 lg:grid-cols-3">
         {isLoaded ? (
           searchResults.map((pokemon) => (
-            <div key={pokemon.name}>
+            <div key={pokemon.name} className="md:mx-4">
               <Tilt className="Tilt" options={{ max: 20, perspective: 2000 }}>
                 <PokemonCard pokemon={pokemon} />
               </Tilt>

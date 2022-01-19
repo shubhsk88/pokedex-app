@@ -8,12 +8,12 @@ const PokemonCard = ({ pokemon }) => {
   const pokemonColor = colorPicker(pokemon.types[0].type.name);
   return (
     <Link href={`/${pokemon.id}`} passHref>
-      <div className="flex-1">
-        <div className="shadow-lg overflow-hidden max-w-xl rounded-md">
+      <div className="justify-center">
+        <div className="shadow-lg overflow-hidden  mx-auto  max-w-xl rounded-md">
           <div className={` ${pokemonColor} flex justify-center`}>
             <img
               className="w-1/2 py-2 "
-              src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
+              src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png`}
               alt={pokemon.name}
             />
           </div>
@@ -23,29 +23,33 @@ const PokemonCard = ({ pokemon }) => {
           </div>
           <div className="px-6 py-4">
             <div className="font-bold text-3xl capitalize ">{pokemon.name}</div>
-            <div className="text-lg  flex  m-2 ">
-              <div className="mt-2 mr-2">Type: </div>
-              {pokemon.types.map((type) => (
-                <span
-                  key={type.type.name}
-                  className={`rounded-lg mb-4 flex  p-2 mx-1  ${colorPicker(
-                    type.type.name
-                  )}`}
-                >
-                  #{type.type.name}
-                </span>
-              ))}
+            <div className="flex">
+              <div className="my-2 mr-2">Type: </div>
+              <div className="text-lg  flex  m-2 ">
+                {pokemon.types.map((type) => (
+                  <span
+                    key={type.type.name}
+                    className={`rounded-lg mb-4 flex  p-2 mx-1  ${colorPicker(
+                      type.type.name
+                    )}`}
+                  >
+                    #{type.type.name}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="text-lg  flex text-gray-800">
-              <div className="mt-2 mr-2">Abilities: </div>
-              {pokemon.abilities.map((data) => (
-                <span
-                  key={data.ability.name}
-                  className=" rounded-lg mb-4 flex  flex-wrap p-2 mx-1 bg-gray-200"
-                >
-                  #{data.ability.name}
-                </span>
-              ))}
+            <div className="flex ">
+              <div className=" mr-2 my-2">Abilities: </div>
+              <div className="text-lg  flex text-gray-800 flex-wrap">
+                {pokemon.abilities.map((data) => (
+                  <span
+                    key={data.ability.name}
+                    className=" rounded-lg mb-4 flex  flex-wrap p-2 mx-1 bg-gray-200"
+                  >
+                    #{data.ability.name}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>

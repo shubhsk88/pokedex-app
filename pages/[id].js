@@ -18,9 +18,9 @@ const PokemonDetails = () => {
   useEffect(() => {
     dispatch(getEvolution(id));
     dispatch(getPokemon(id));
-    // return () => dispatch(resetPokemon());
+    return () => dispatch(resetPokemon());
   }, [dispatch, id]);
-  // return <div>hI</div>;
+
   if (!isLoaded) {
     return (
       <div className="mt-64  max-w-xl  flex justify-center">
@@ -42,7 +42,7 @@ const PokemonDetails = () => {
             className={`w-1/3 px-4 py-2 rounded-lg overflow-hidden ${colorPicker(
               pokemon.types[0].type.name
             )}`}
-            src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
+            src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png`}
             alt={pokemon.name}
           />
 
@@ -93,7 +93,11 @@ const PokemonDetails = () => {
           </div>
         </div>
         <div className="text-4xl">Evolution</div>
-        <div className=" bg-gray-200 p-4  my-2 w-full justify-between items-center rounded-lg  flex">
+        <div
+          className={`${colorPicker(
+            pokemon.types[0].type.name
+          )}  p-4  my-2 w-full justify-between items-center rounded-lg  flex`}
+        >
           {evolutions.map((evolution) => (
             <div key={evolution.name} className="flex flex-col p-8 ">
               <Link href={`${evolution.id}`}>
@@ -101,7 +105,7 @@ const PokemonDetails = () => {
                   <img
                     className="w-64   overflow-hidden  object-contain
                     "
-                    src={`https://pokeres.bastionbot.org/images/pokemon/${evolution.id}.png`}
+                    src={`https://cdn.traction.one/pokedex/pokemon/${evolution.id}.png`}
                     alt={evolution.name}
                   />
                 </div>

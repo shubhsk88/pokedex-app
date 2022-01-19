@@ -5,12 +5,16 @@
 /.pnp
 .pnp.js
 
+/assets
+
 # testing
 /coverage
+
 
 .next
 
 # production
+
 /build
 /src/assets/main.css
 # misc
